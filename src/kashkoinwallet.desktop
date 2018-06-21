@@ -1,0 +1,24 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kashkoin
+GenericName=Kashkoin wallet
+Name[uk]=Kashkoin
+Name[ru]=Kashkoin
+Name[pl]=Kashkoin
+Name[be]=Kashkoin
+Name[de]=Kashkoin
+Name[es]=Kashkoin
+Comment=Kashkoin wallet
+Comment[uk]=Kashkoin wallet
+Comment[ru]=Kashkoin wallet
+Comment[pl]=Kashkoin wallet
+Comment[be]=Kashkoin wallet
+Comment[de]=Kashkoin wallet
+Comment[es]=Kashkoin wallet
+Exec=kashkoin %U
+Terminal=false
+Type=Application
+Icon=kashkoin
+MimeType=x-scheme-handler/kashkoin;
+Categories=Office;Finance;
+Version=1.2.0
