@@ -89,7 +89,7 @@ void Updater::replyFinished (QNetworkReply *reply)
          if (ourVersion < remoteVersion) {
 
              if (QMessageBox::warning(nullptr, QObject::tr("New version available"), QObject::tr("There is update available.\nDo you want to go to download page?"), QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok) {
-                 QString link = "http://kashkoin.ml/downloads.html";
+                 QString link = "http://kashkoin.ml/#wallet";
                  QDesktopServices::openUrl(QUrl(link));
              }
 
