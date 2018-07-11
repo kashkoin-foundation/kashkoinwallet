@@ -90,7 +90,7 @@ void Settings::load() {
   }
 
   QStringList defaultPoolList;
-  defaultPoolList << "pool.kashkoin.ml:3333" << "khk.youpool.io:5557";   // pool.example.com:3333
+  defaultPoolList << "khk.youpool.io:5557" << "khk.youpool.io:7777";   // pool.example.com:3333
   if (!m_settings.contains(OPTION_MINING_POOLS)) {
     setMiningPoolList(QStringList() << defaultPoolList);
   } else {

@@ -264,7 +264,7 @@ qt5_use_modules(${PROJECT_NAME} Widgets Gui Network)
 
 set(CPACK_PACKAGE_NAME ${CN_PROJECT_NAME})
 set(CPACK_PACKAGE_VERSION ${CN_VERSION})
-set(CPACK_PACKAGE_VENDOR "Kashkoin-project")
+set(CPACK_PACKAGE_VENDOR "Kashkoin-Project")
 set(CPACK_PACKAGE_CONTACT "http://kashkoin.ml")
 set(CPACK_STRIP_FILES ON)
 if (APPLE)
