@@ -1,13 +1,14 @@
 // Copyright (c) 2011-2016 The Cryptonote developers
 // Copyright (c) 2011-2013 The Bitcoin Core developers
 // Copyright (c) 2015-2016 XDN developers
-// Copyright (c) 2016-2017 The Karbowanec developers
+// Copyright (c) 2016-2018 The Karbowanec developers
 // Copyright (c) 2017-2018 Kashkoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <QCloseEvent>
 #include <QFileDialog>
+#include <QStandardPaths>
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
@@ -296,7 +297,9 @@ bool MainWindow::event(QEvent* _event) {
 void MainWindow::createWallet() {
   QString filePath = QFileDialog::getSaveFileName(this, tr("New wallet file"),
   #ifdef Q_OS_WIN
-      QApplication::applicationDirPath(),
+      //QApplication::applicationDirPath(),
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+
   #else
       QDir::homePath(),
   #endif
@@ -324,7 +327,8 @@ void MainWindow::createWallet() {
 void MainWindow::createNonDeterministicWallet() {
   QString filePath = QFileDialog::getSaveFileName(this, tr("New wallet file"),
   #ifdef Q_OS_WIN
-      QApplication::applicationDirPath(),
+      //QApplication::applicationDirPath(),
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
   #else
       QDir::homePath(),
   #endif
@@ -352,7 +356,8 @@ void MainWindow::createNonDeterministicWallet() {
 void MainWindow::openWallet() {
   QString filePath = QFileDialog::getOpenFileName(this, tr("Open .wallet/.keys file"),
 #ifdef Q_OS_WIN
-    QApplication::applicationDirPath(),
+    //QApplication::applicationDirPath(),
+      QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
 #else
     QDir::homePath(),
 #endif
@@ -432,8 +437,8 @@ void MainWindow::importTrackingKey() {
       return;
     }
 
-    if (!filePath.endsWith(".trackingwallet")) {
-      filePath.append(".trackingwallet");
+    if (!filePath.endsWith(".wallet")) {
+      filePath.append(".wallet");
     }
 
     CryptoNote::AccountKeys keys;
@@ -591,7 +596,8 @@ void MainWindow::showStatusInfo() {
 void MainWindow::backupWallet() {
   QString filePath = QFileDialog::getSaveFileName(this, tr("Backup wallet to..."),
   #ifdef Q_OS_WIN
-      QApplication::applicationDirPath(),
+      //QApplication::applicationDirPath(),
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
   #else
       QDir::homePath(),
   #endif

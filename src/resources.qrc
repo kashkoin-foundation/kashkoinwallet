@@ -44,8 +44,8 @@
     <qresource prefix="/images">
         <file alias="splash">images/splash.png</file>
         <file alias="cryptonote">images/cryptonote.png</file>
-        <file alias="coin">images/khk_coin.png</file>
         <file alias="clock">images/clock.gif</file>
+        <file alias="bg.png">images/bg.png</file>
         <file alias="handle.png">images/handle.png</file>
     </qresource>
     <qresource prefix="/skin">
@@ -63,6 +63,8 @@
         <file>languages/qt_de.qm</file>
         <file>languages/es.qm</file>
         <file>languages/qt_es.qm</file>
+        <file>languages/fr.qm</file>
+        <file>languages/qt_fr.qm</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="mplusm">fonts/mplus-1m-medium.ttf</file>

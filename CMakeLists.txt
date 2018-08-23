@@ -179,6 +179,7 @@ set(CRYPTONOTE_SOURCES
 file(GLOB_RECURSE SOURCES src/*.cpp)
 file(GLOB_RECURSE HEADERS src/*.h)
 file(GLOB_RECURSE FORMS src/gui/ui/*.ui)
+file(GLOB_RECURSE Mnemonics cryptonote/src/mnemonics/*)
 
 set(QRC src/resources.qrc)
 
@@ -242,13 +243,16 @@ file(GLOB PLATFORM_SOURCES cryptonote/src/Platform/${PLATFORM_DIR}/System/*)
 set(CRYPTONOTE_SOURCES ${CRYPTONOTE_SOURCES} ${PLATFORM_SOURCES})
 
 add_library(${CRYPTONOTE_LIB} STATIC ${CRYPTONOTE_SOURCES})
+add_library(Mnemonics ${Mnemonics})
 set_target_properties(${CRYPTONOTE_LIB} PROPERTIES COMPILE_DEFINITIONS _GNU_SOURCE)
 target_link_libraries(${CRYPTONOTE_LIB} ${Boost_LIBRARIES})
+set_target_properties(Mnemonics PROPERTIES COMPILE_DEFINITIONS _GNU_SOURCE)
+target_link_libraries(Mnemonics ${Boost_LIBRARIES})
 
 #add_executable(${PROJECT_NAME} ${BUILD_PLATFORM} ${BUILD_RESOURCES} ${SOURCES} ${HEADERS} ${UIS} ${RCC} ${QM} ${TRANSLATIONS})
 add_executable(${PROJECT_NAME} ${BUILD_PLATFORM} ${BUILD_RESOURCES} ${SOURCES} ${HEADERS} ${UIS} ${RCC})
 set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_DEFINITIONS _GNU_SOURCE)
-target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${QTMAIN} ${CRYPTONOTE_LIB} ${QRENCODE_LIB})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${QTMAIN} ${CRYPTONOTE_LIB} ${QRENCODE_LIB} Mnemonics)
 
 if (APPLE)
   qt5_use_modules(${PROJECT_NAME} PrintSupport)
@@ -264,7 +268,7 @@ qt5_use_modules(${PROJECT_NAME} Widgets Gui Network)
 
 set(CPACK_PACKAGE_NAME ${CN_PROJECT_NAME})
 set(CPACK_PACKAGE_VERSION ${CN_VERSION})
-set(CPACK_PACKAGE_VENDOR "Kashkoin-Project")
+set(CPACK_PACKAGE_VENDOR "Kashkoin-project")
 set(CPACK_PACKAGE_CONTACT "http://kashkoin.ml")
 set(CPACK_STRIP_FILES ON)
 if (APPLE)
@@ -287,10 +291,10 @@ elseif (UNIX)
         set(CPACK_DEBIAN_PACKAGE_MAINTAINER "${CPACK_PACKAGE_VENDOR} <kashkoin.khk@gmail.com>")
         set(CPACK_DEBIAN_PACKAGE_SECTION Office)
         set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
-        set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "kashkoin is a anonymous
-     digital currency that is secure, private, and untraceable. It is 
-     open-source, nobody owns or controls Kashkoin and everyone can 
-     take part.")
+        set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Kashkoin is a anonymous
+ digital currency that is secure, private, and untraceable. It is
+ open-source, nobody owns or controls Kashkoin and everyone can
+ take part.")
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_DEBIAN_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${VERSION_RELEASE}${CPACK_SYSTEM_NAME}")
     else()
         set(CPACK_GENERATOR RPM)
@@ -300,10 +304,10 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_DEBIAN_PACKAGE_NAME}-${CPACK_PACKAGE_VERSIO
         set(CPACK_RPM_PACKAGE_GROUP Office)
         set(CPACK_RPM_PACKAGE_REQUIRES "qt5-qtbase >= 5.3.2, qt5-qtbase-gui >= 5.3.2")
         set(CPACK_RPM_PACKAGE_SUMMARY "Kashkoin KHK wallet")
-        set(CPACK_RPM_PACKAGE_DESCRIPTION "kashkoin is a anonymous
-     digital currency that is secure, private, and untraceable. It is 
-     open-source, nobody owns or controls Kashkoin and everyone can 
-     take part.")
+        set(CPACK_RPM_PACKAGE_DESCRIPTION "Kashkoin is a anonymous
+ digital currency that is secure, private, and untraceable. It is
+ open-source, nobody owns or controls Kashkoin and everyone can
+ take part.")
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${VERSION_RELEASE}${CPACK_SYSTEM_NAME}")
     endif ()
 elseif (WIN32)

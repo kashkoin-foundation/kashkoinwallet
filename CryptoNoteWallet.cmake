@@ -2,4 +2,4 @@
 set(CN_PROJECT_NAME "kashkoin")
 set(CN_CURRENCY_DISPLAY_NAME "Kashkoin")
 set(CN_CURRENCY_TICKER "KHK")
-set(CN_VERSION 1.2.0)
+set(CN_VERSION 1.2.2)
